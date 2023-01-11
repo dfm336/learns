@@ -6,9 +6,8 @@ import cn.tongdun.fast2jack.JSONArray;
 import com.dfm.app.fanxing.User;
 import org.apache.commons.lang3.StringUtils;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -19,7 +18,28 @@ import java.util.List;
  */
 public class TestLocalData {
     public static void main(String[] args) {
-        testWeekCalculate();
+       getYearStartDay(YearMonth.now());
+    }
+
+
+    public static void getYearStartDay(YearMonth yearMonth){
+//        YearMonth newYearMonth = yearMonth.minusYears(1);
+        DateTimeFormatter dailyFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        int year = 2023;
+        Date fromDate = Date.from(YearMonth.of(year, 1).atDay(1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        System.out.println("fromDate = " + fromDate);
+
+//        Year year = Year.now();
+//        Instant instant = year.atDay(1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+//        Date startDay = Date.from(instant);
+//        System.out.println("startDay = " + startDay);
+//
+//        String start = year.atDay(1).format(dailyFormatter);
+//        String end = year.atMonth(12).atEndOfMonth().format(dailyFormatter);
+//
+//        System.out.println("start = " + start);
+//        System.out.println("end = " + end);
     }
 
     public static void testWeekCalculate(){

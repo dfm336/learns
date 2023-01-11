@@ -15,8 +15,8 @@ public class Moudule {
     private String value;
     private Integer code;
 
-    public Moudule(MyEnum myEnum){
-        this.uuid = myEnum.getType();
-        this.value = myEnum.getName();
-    }
+//    public Moudule(MyEnum myEnum){
+//        this.uuid = myEnum.getType();
+//        this.value = myEnum.getName();
+//    }
 }

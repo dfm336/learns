@@ -18,7 +18,10 @@ import java.util.List;
  */
 public class TestLocalData {
     public static void main(String[] args) {
-       getYearStartDay(YearMonth.now());
+//       getYearStartDay(YearMonth.now());
+//        testLong();
+//        getCurMonth(6,7);
+        printMinMonth();
     }
 
 
@@ -40,6 +43,65 @@ public class TestLocalData {
 //
 //        System.out.println("start = " + start);
 //        System.out.println("end = " + end);
+    }
+
+    /**
+     * 获取最近的半年度/季度单位所在月
+     * eg: monthQuantity = 6   , curMonth 8
+     * 年度则： 1，6
+     * 季度则：1，6，9，12
+     * @param monthQuantity
+     * @param curMonth
+     * @return
+     */
+    private static void getCurMonth(Integer monthQuantity, Integer curMonth) {
+//        int unit = 12 / monthQuantity;
+//        Integer result = curMonth;
+//        for (int i=0;i<unit;i++) {
+//            if (i * monthQuantity < curMonth && (i+1)*monthQuantity >= curMonth) {
+////                result = i == 0 ? 1 : (i * monthQuantity);
+//                result = (i * monthQuantity);
+//            }
+//        }
+//
+//        System.out.println("result = " + result);
+//        int year = 2023;
+//        int month = result+1;
+//
+//        System.out.println("month = " + month);
+//        Instant instant = YearMonth.of(year, month).atDay(1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+//        Date whatDay = Date.from(instant);
+//        System.out.println("whatDay = " + whatDay);
+
+
+    }
+
+    public static void printMinMonth(){
+        int year = 2023;
+        int month = 1;
+        YearMonth yearMonth = YearMonth.of(year, month);
+//        Date to = Date.from(yearMonth.atEndOfMonth().plusDays(1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+//        System.out.println("now = " + to);
+////        Date fromDate = Date.from(LocalDateTime.ofInstant(now.toInstant(), ZoneId.systemDefault()).minusMonths(3).minusDays(1).atZone(ZoneId.systemDefault()).toInstant());
+//        Date from = Date.from(yearMonth.minusMonths(3).atDay(1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+//        System.out.println("from = " + from);
+
+
+        Instant instant = YearMonth.of(year, month).atDay(1).plusDays(-1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        Date whatDay = Date.from(instant);
+        System.out.println("whatDay = " + whatDay);
+
+        Instant oInstant = YearMonth.of(year, month).atDay(1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        Date originalDay = Date.from(oInstant);
+        System.out.println("originalDay = " + originalDay);
+
+
+    }
+
+    public static void testLong(){
+        int cnt = 12;
+        Long value = Long.valueOf(cnt);
+        System.out.println("value = " + value);
     }
 
     public static void testWeekCalculate(){

@@ -1,4 +1,8 @@
 package leetcode.editor.cn;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author  fengming.dai 
  * @date    2022-11-22 16:01:30 
@@ -50,15 +54,32 @@ package leetcode.editor.cn;
 // 👍 15832 👎 0
     
  public static void main(String[] args) {        
- 	Solution solution = new Q0001TwoSum().new Solution();    
+ 	Solution solution = new Q0001TwoSum().new Solution();
+ 	int[] nums = {2,3,11,-1};
+ 	int target = 10;
+ 	int[] res = solution.twoSum(nums, target);
+ 	System.out.println(String.format("res:%d,%d", res[0],res[1]));
  }    
 
  //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        return null;
+        int[] res = new int[2];
+        //key : target - nums[i], value = index
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            Integer key = target - nums[i];
+            if (null != map.get(key)){
+                res[0] = i;
+                res[1] = map.get(key);
+            }else {
+                map.put(nums[i],i);
+            }
+        }
+        return res;
     }
 }
-//leetcode submit region end(Prohibit modification and deletion)
 
+
+//leetcode submit region end(Prohibit modification and deletion)
  }

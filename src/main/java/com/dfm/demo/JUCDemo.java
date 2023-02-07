@@ -1,7 +1,12 @@
 package com.dfm.demo;
 
+import org.luaj.vm2.ast.Str;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @Author:fengming.dai
@@ -12,6 +17,16 @@ public class JUCDemo {
     }
 
 
+
+
+
+    public static void testCopyOnWriteList(){
+        CopyOnWriteArrayList<String> copyOnWriteArrayList = new CopyOnWriteArrayList<>();
+        copyOnWriteArrayList.add("s");
+        copyOnWriteArrayList.remove("s");
+        new CopyOnWriteArraySet();
+
+    }
 
     public static void testAtomic(){
         AtomicLong  atomicLong = new AtomicLong(0);
@@ -72,6 +87,14 @@ public class JUCDemo {
         threadTwo.join();
 
         System.out.println("main Thread  finish");
+    }
+
+
+
+    public static void testLockSupport(){
+        System.out.println("begin park");
+        LockSupport.park();
+        System.out.println("end park");
     }
 
 

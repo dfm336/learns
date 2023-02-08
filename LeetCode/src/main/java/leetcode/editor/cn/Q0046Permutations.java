@@ -93,7 +93,7 @@ class Solution {
 
              backtrace(used,track,nums);
 
-             //取消选择
+             //取消选择，其实就是  删除最后一个 removeLast()也可。
              int index = track.indexOf(nums[i]);
              track.remove(index);
              used[i] = false;

@@ -54,3 +54,24 @@ Kafka还引入了 多副本（Replica)机制。 同一分区，存在多个副�
 - kafka通过 多副本 是爱你 故障自动转移， 保证 kafka集群的 某个broker 失效 仍能使用
 
 ![img.png](images/多副本架构.png)
+
+- 分区中的所有副本 称为 AR（Assigned Replicas） 
+- 所有 跟 leader 副本保持同步的 副本称为 ISR（In-Sync Replicas），ISR 是AR 的一个子集
+
+消息会先发送到leader副本上，然后follower副本才会 从leader副本中拉取消息进行同步
+同步期间， follower 相比与 leader 会有一定程度的滞后。这个 一定程度 是 指**可以忍受的 程度**
+这个 ***程度***可以通过参数配置。
+
+- 与leader副本滞后过多的副本称为 OSR（Out-of-Sync Replicas）
+
+由此可见： AR = ISR + OSR
+正常情况下 应该所有的副本 都保持一定程度同步。 也就是 OSR 为空。 AR = ISR
+
+Leader副本负责 维护和跟踪 ISR 集合中 所有follower 副本的滞后状态，
+当 follower 副本 滞后太多或 失效时，Leader会 把 这个 follower 从 ISR 中 剔出
+
+如果 OSR 中的副本 追上 Leader副本后，那么 leader副本会把它从 OSR集合转移至 ISR集合
+
+
+默认情况下， 当 leader副 本发生故障时，只有在 ISR集合中的副本才有资格被选举为新的 leader， 
+而在 OSR集合中的副 本则没有任何机会(不过这个原则也可以通过修改相应的参数配置来改变) 

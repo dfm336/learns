@@ -1,0 +1,26 @@
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode quick = head;
+        while (slow != null && quick != null){
+            if (slow == quick){
+                return true;
+            }
+            slow = slow.next;
+            if (quick.next != null){
+                quick = quick.next.next;
+            }
+
+        }
+        return false;
+    }
+}
+
+//total_testcases:23
+//total_correct:13
+//input_formatted:[1]
+-1
+//expected_output:false
+//code_output:true
+//last_testcase:[1]
+-1

@@ -1,0 +1,103 @@
+3步法：
+
+* java
+
+```java
+class Solution {
+    public void reorderList(ListNode head) {
+        /*
+        1 找链表中点 -- 快慢指针
+        2 反转后半链表 -- 双指针/递归/栈
+        3 交替节点合并链表
+         */
+
+        // 奇数个时中点归左边。
+        ListNode leftEnd = findMiddle(head);
+        ListNode rightStart = leftEnd.next;
+        // 左右之间断开，防止环。
+        leftEnd.next = null;
+
+        rightStart = reverse(rightStart);
+        link(head, rightStart);
+    }
+
+    // 快慢指针找中点。
+    ListNode findMiddle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        // 注意条件，要兼容偶数个（fast!=null）和奇数个（fast.next!=null）的情况。
+        while (fast!=null && fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // 遇到偶数节点的链表时，返回的是靠左的节点。
+        return slow;
+    }
+
+    // 反转链表，返回新头。
+    ListNode reverse(ListNode node) {
+        ListNode left = null;
+        ListNode right = node;
+        while (right!=null) {
+            ListNode tmp = right.next;
+            // 反转链接方向。
+            right.next = left;
+            left = right;
+            right = tmp;
+        }
+        return left;
+    }
+
+    // 合并链表。
+    // 奇数个节点时，中心节点归入left，此时left会比right长1。
+    void link(ListNode left, ListNode right) {
+        while (right!=null) {
+            ListNode tmpLeft = left.next;
+            ListNode tmpRight = right.next;
+            // 保持左节点在前。
+            left.next = right;
+            right.next = tmpLeft;
+            left = tmpLeft;
+            right = tmpRight;
+        }
+    }
+}
+```
+
+栈法：
+
+* java
+
+```java
+class Solution2 {
+    public void reorderList(ListNode head) {
+        // 利用栈逆序链表
+        ListNode p = head;
+        Stack<ListNode> stack = new Stack<>();
+        while (p!=null) {
+            stack.push(p);
+            p = p.next;
+        }
+        // 用指针分别指向左半边和逆序的右半边。
+        p = head;
+        ListNode reverseP = stack.pop();
+
+        // 遍历直到左右指针相遇，注意：
+        // 链表节点数奇偶不同会导致两种情况的相遇：
+        // 1. 正好重叠 2. 相互相邻
+        while (p.next != reverseP && p != reverseP) {
+            ListNode tmp = p.next;
+            // 插入右指针
+            p.next = reverseP;
+            // 从尾巴断开右指针节点
+            stack.peek().next = null;
+            reverseP.next = tmp;
+
+            // 准备进入下一次迭代。
+            p = tmp;
+            reverseP = stack.pop();
+        }
+    }
+}
+```
+

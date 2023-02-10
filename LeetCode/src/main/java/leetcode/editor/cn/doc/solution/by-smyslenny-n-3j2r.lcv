@@ -1,0 +1,41 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public void reorderList(ListNode head) {
+        Stack<ListNode> stack = new Stack<>();
+        ListNode temp = head;
+        while (temp != null){
+            stack.push(temp);
+            temp = temp.next;
+        }
+        temp = head;
+        while (temp.next != stack.peek() && temp != stack.peek()){
+            ListNode prev = temp;
+            ListNode curr = stack.pop();
+            ListNode next = temp.next;
+            prev.next = curr;
+            curr.next = next;
+            temp = next;
+        }
+        stack.pop().next = null;
+    }
+}
+```
+

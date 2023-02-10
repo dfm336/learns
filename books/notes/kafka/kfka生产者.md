@@ -413,7 +413,7 @@ Sender 从 RecordAccumulator 中 获取缓存的消息之后
 上面提及的 InFlightRequests 还可以获得 **leastLoadedNode，即所有 Node 中负载最小的 那一个** 。
 > 这里 的负载最小是通过每个 Node 在 InFlightRequests 中还未确认的请求决定的，未确 认的请求越多则认为负载越大 。
 
-![img.png](判定leastLoadedNode.png)
+![img.png](images/判定leastLoadedNode.png)
 如图 的 InFlightRequests 来说，图中展示了 三个节点 NodeO、Node1 和 Node2，很明显 Node1 的 负载最 小 。也就是说， Nodel 为当前的 leastLoadedNode。 
 
 - 选择 leastLoadedNode 发送请求可以使它能够尽快发出，避免因网络拥塞 等异常 而影响整体的进度。 

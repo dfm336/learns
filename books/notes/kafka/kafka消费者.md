@@ -582,3 +582,68 @@ KafkaConsumer 虽然是 非线程安全的，  单 并不意味着  我们消费
 注意： 这个共享变量 必须保证线程安全。
 - 需要加锁
 - 写入offset 时，注意 消息位移覆盖
+
+## 重要的消费者参数
+1.fetch.min.bytes
+  - 用来配置Consumer 一次拉取请求 poll 中能拉取的 最小数据量，默认 1(B).
+  - 也就是说，一次拉取，broker发送过来的数据 至少得有 1B，如果不足 1B，就等待 broker 数据满足。
+  - 适当调大这个 参数，可以提高 一定 吞吐量。 不过 就会 造成额外的 延迟latency（等待时间久了）
+2.fetch.max.bytes
+  - 对应fetch.min.bytes 是至少， 这里的max 则是 至多。
+  - 配置consumer 一次拉取poll 中能拉取的 最大数据量， 默认 52428800 （B), 50MB
+> tips: 考虑kafka   
+> Q:假设fetch.max.bytes 设置为 5B, 一条消息（record) 的最小值为 10B，那么 会不会  因为 10b > 5b ,导致 无法拉取消息呢？
+> A: fetch.max.bytes 该参数的 设置 并不是 绝对的最大值， 如果在 第一个 非空分区 中拉取的 第一条消息 > fetch.max.bytes ,那么该消息仍然返回。
+> Q: 为什么会这样设计，让broker 仍能返回呢？
+> A: todo
+> Kafka中所能接收的最大消息的大小通过服务端参数 message.max.bytes (对 应于主题端参数 max.message .bytes)来设置。
+
+3. fetch.max.wait.ms
+  - 这个参数跟 fetch.min.bytes 有关， 也可以说 因为 fetch.min.bytes 才出现的  这个参数。
+  - 由于 broker 会因为 消息数据量太小 无法 达到 min ，会一直等待，  这个 等待 也得有个 限制， 就是 本参数 控制的，默认500 ms。
+  - 因此 对于 业务要求延时低时， 可以把 这个参数 调小
+
+4. max.partition.fetch.bytes
+  - 用来配置 从 每个 partition 中能 返回给 Consumer 的 最大数据量。 默认 1048576 （B), 1M
+  - 这个 参数 跟 fetch.max.bytes 类似，一个是 控制 单次拉取 每个分区中 大小， 本参数是控制 一次拉取整体消息大小。 
+>同样，如果这个参数设定的值比 消息的大小要小，那么也不会造成无法消费， Kafka 为了保持消费逻辑的正常运转不会对此做 强硬的限制。
+
+
+5. max.poll.records
+  - 用来配置 consumer 一次 poll 最多 拉取 多少条消息。 默认 500 条
+  - 如果 消息都比较小，可以 适当 调大 这个参数， 来提升 消费速度
+
+6. connections.max.idle.ms
+  - 用来指定 多久之后 关闭限制的 连接。 默认 540000 ms， 9min
+
+7. exclude.internal.topics
+  - 来指定  kafka 内部的 两个主题 （ _consumer_offset  和  _transaction_state）是否 向 消费者公开。
+  - 如果用户想 消费这两个主题的数据， 必须把 本参数 设置为 true， 并且 只能用 subscribe(Collection)的方法订阅
+
+8 receive_buffer_bytes
+  - 用来设置 Socket 接收消息 缓冲区 （SO_RECBBUFFER） 大小。 默认 65536 （B），64KB
+  - 如果设置为 -1， 则使用 操作系统默认值。
+  - 如果 Consumer 跟 Kafka 处于不同的 机房， 可以 适当 调大 这个参数
+
+9.send_buffer_bytes
+  - 用来设置 Socker 发送消息 缓冲区 
+
+10.request.timeout.ms
+  - 配置consumer等待请求响应的最长时间，默认 3000（ms)
+
+11.metadata.max.age.ms
+  - 这个参数用来配置元数据的过期时间，默认值为 300000 (ms)，即 5 分钟。
+  - 如果元数据在 此参数所限定的时间范围内没有进行更新，则会被强制更新，即使没有任何分区变化或有新的 broker 加入。
+
+12.reconnect.backoff.ms
+  - 配置尝试重新连接指定主机之前的等待时间(也称为退避时间〉，避免频繁连接主机，默认 50 ms
+  - 这种机制适用于消费者向 broker 发送的所有 请求。
+
+13.retry.backoff.ms
+  - 来配置尝试重新发送失败的请求到指定的主题分区之前的等待(退避〉时间，
+    避免在某些故障情况下频繁地重复发送，默认值为 100 (ms)。
+    
+14. isolation.level
+  - 配置消费者的事务隔离级别，字符串类型
+  - 如果设置为 "read_committed" ,那么消费者  就会 忽略 事务未提交的消息，即 只能消费到 LSO（LastStableOffset)的位置
+  - 默认 配置为 "read_committed", 可 消费 到 HW 的位置

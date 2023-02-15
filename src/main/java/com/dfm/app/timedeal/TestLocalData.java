@@ -1,10 +1,8 @@
 package com.dfm.app.timedeal;
 
 
-import cn.tongdun.fast2jack.JSON;
-import cn.tongdun.fast2jack.JSONArray;
-import com.dfm.app.fanxing.User;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -111,17 +109,17 @@ public class TestLocalData {
 //        ids.add("qlx");
 //        String join = StringUtils.join(ids);
 //        System.out.println("join = " + join);
-        String join = "[\"WMSJ\",\"QZSJ\"]";
-        JSONArray jsonArray = JSONArray.parseArray(join);
-        for (int i=0;i<jsonArray.size();i++){
-            System.out.println(jsonArray.getString(i));
-        }
-
-
-        JSONArray jsonArray1 = JSON.parseArray(join);
-        for (int i=0;i<jsonArray1.size();i++){
-            System.out.println(jsonArray1.getString(i));
-        }
+//        String join = "[\"WMSJ\",\"QZSJ\"]";
+//        JSONArray jsonArray = JSONArray.parseArray(join);
+//        for (int i=0;i<jsonArray.size();i++){
+//            System.out.println(jsonArray.getString(i));
+//        }
+//
+//
+//        JSONArray jsonArray1 = JSON.parseArray(join);
+//        for (int i=0;i<jsonArray1.size();i++){
+//            System.out.println(jsonArray1.getString(i));
+//        }
 //        String s = "dfm,fxx";
 //        String[] split = s.split(",");
 //        Arrays.asList(split).forEach(x-> System.out.println(x));

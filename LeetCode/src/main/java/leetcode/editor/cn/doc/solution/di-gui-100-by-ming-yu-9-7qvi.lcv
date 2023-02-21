@@ -1,0 +1,36 @@
+* java
+
+```java
+
+class Solution {
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        //递
+        if(m==1){
+            ListNode res= reverseN(head,n);
+            return res;
+        }
+        //子问题:对于head.next 来说,反转区间是[m-1,n-1]
+        ListNode last=reverseBetween(head.next,m-1,n-1);
+        //归,让最后的结果,并拼接
+        head.next=last;
+        return head;
+    }
+    //反转前n个节点
+    ListNode successor = null;//后驱节点
+    public ListNode reverseN(ListNode head,int n){
+        //递
+        if(n==1){
+            successor =head.next;
+            return head;
+        }
+        //以head.next为起点,需要反转前n-1个节点
+        ListNode last = reverseN(head.next,n-1);
+        //归
+        head.next.next=head;
+        //让反转后的head节点与后面的节点连起来
+        head.next=successor;
+        return last;
+    }
+}
+```
+

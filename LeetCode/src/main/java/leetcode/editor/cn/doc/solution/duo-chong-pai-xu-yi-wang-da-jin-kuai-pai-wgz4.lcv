@@ -1,0 +1,435 @@
+### 解题思路
+
+包含了三种常见的排序算法：
+
+**1. 快速排序 （Quick Sort）
+2. 归并排序 （Merge Sort）
+3. 堆排序（Heap Sort）**
+
+<br> </br>
+
+---
+
+### 方法一. 快速排序（Quick Sort）
+
+**快速排序**（英语：Quicksort），又称**分区交换排序**（partition-exchange sort），简称**快排**，一种排序算法，最早由东尼·霍尔（Tony Hoare ）提出。在平均状况下，排序 $n$ 个项目要 ${\displaystyle \ O(n\log n)}$ 次比较。在最坏状况下则需要 ${\displaystyle O(n^{2})}$ 次比较，但这种状况并不常见。事实上，快速排序 ${\displaystyle \Theta (n\log n)}$ 通常明显比其他演算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地达成。[摘自@[维基百科](https://zh.wikipedia.org/zh-hans/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F)]
+
+快速排序使用**分治法**（Divide and conquer）策略来把一个序列（list）分为较小和较大的 2 个子序列，然后递归地排序两个子序列。
+
+其基本步骤为 [摘自@[维基百科](https://zh.wikipedia.org/zh-hans/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F)]：
+
+1. **挑选基准值**：从数列中挑出一个元素，称为“基准”（pivot）；
+2. **分割**（partition）：重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（与基准值相等的数可以到任何一边）。在这个分割结束之后，对基准值的排序就已经完成；
+3. **递归排序子序列**：递归地将小于基准值元素的子序列和大于基准值元素的子序列排序。
+
+递归到最底部的判断条件是数列的大小是零或一，此时该数列显然已经有序。
+
+<br> </br>
+
+在具体实现上也有多种方式，下图则展示了一种基于“填坑”思路的实现：
+
+* 以（子）数组最左端元素为pivot；
+
+* 每次先从右侧（以 right 指代）开始找到小于pivot的元素，并将其填充到左侧空出的“坑”处，再从左侧（以 left 指代）开始找到大于pivot的元素，将其填充到右侧空出的“坑”处；
+* 当左右指针相遇时，将pivot放置于 left/right 处，此时得到了一个有效的分割：小于pivot的元素均在其左侧，大于pivot的元素均在其右侧（等于pivot的元素可放置于任何一边）；
+* 对pivot两侧的子数组递归排序，直至子数组无法再分割。
+
+<br> </br>
+
+![quick_sort.png](https://pic.leetcode-cn.com/1652980493-wDmBKe-quick_sort.png)
+
+<br> </br>
+
+选取基准值pivot也有多种方式，且选取pivot的方法对排序的时间性能有着决定性的影响。例如，对于一个逆序数组，如果每次选取数组中的第一个元素为pivot，那么将其正序排列的过程将会变得非常慢，时间复杂度为 $O(n^2)$。因此，在具体实现中考虑随机化选择基准值pivot也是非常有必要的。
+
+&nbsp;
+
+**代码：**
+
+下面给出了 Python 语言的实现，并添加了较为详细的注释：
+<br>
+
+* []
+
+```Python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+
+        def partition(arr, low, high):
+            pivot = arr[low]                                        # 选取最左边为pivot
+
+            left, right = low, high     # 双指针
+            while left < right:
+                
+                while left<right and arr[right] >= pivot:          # 找到右边第一个<pivot的元素
+                    right -= 1
+                arr[left] = arr[right]                             # 并将其移动到left处
+                
+                while left<right and arr[left] <= pivot:           # 找到左边第一个>pivot的元素
+                    left += 1
+                arr[right] = arr[left]                             # 并将其移动到right处
+            
+            arr[left] = pivot           # pivot放置到中间left=right处
+            return left
+        
+        def randomPartition(arr, low, high):
+            pivot_idx = random.randint(low, high)                   # 随机选择pivot
+            arr[low], arr[pivot_idx] = arr[pivot_idx], arr[low]     # pivot放置到最左边
+            return partition(arr, low, high)                        # 调用partition函数
+
+        def quickSort(arr, low, high):
+            if low >= high:             # 递归结束
+                return  
+            # mid = partition(arr, low, high)       # 以mid为分割点【非随机选择pivot】
+            mid = randomPartition(arr, low, high)   # 以mid为分割点【随机选择pivot】
+            quickSort(arr, low, mid-1)              # 递归对mid两侧元素进行排序
+            quickSort(arr, mid+1, high)
+        
+
+        quickSort(nums, 0, len(nums)-1)             # 调用快排函数对nums进行排序
+        return nums
+```
+
+* []
+
+```Python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+
+        def partition(arr, low, high):
+            pivot_idx = random.randint(low, high)                   # 随机选择pivot
+            arr[low], arr[pivot_idx] = arr[pivot_idx], arr[low]     # pivot放置到最左边
+            pivot = arr[low]                                        # 选取最左边为pivot
+
+            left, right = low, high     # 双指针
+            while left < right:
+                
+                while left<right and arr[right] >= pivot:          # 找到右边第一个<pivot的元素
+                    right -= 1
+                arr[left] = arr[right]                             # 并将其移动到left处
+                
+                while left<right and arr[left] <= pivot:           # 找到左边第一个>pivot的元素
+                    left += 1
+                arr[right] = arr[left]                             # 并将其移动到right处
+            
+            arr[left] = pivot           # pivot放置到中间left=right处
+            return left
+        
+
+        def quickSort(arr, low, high):
+            if low >= high:             # 递归结束
+                return  
+            mid = partition(arr, low, high)     # 以mid为分割点
+            quickSort(arr, low, mid-1)          # 递归对mid两侧元素进行排序
+            quickSort(arr, mid+1, high)
+        
+
+        quickSort(nums, 0, len(nums)-1)         # 调用快排函数对nums进行排序
+        return nums
+```
+
+&nbsp;
+
+---
+
+### 方法二. 归并排序（Merge Sort）
+
+归并排序是建立在归并操作上的一种有效，稳定的排序算法，该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。[摘自@[百度百科](https://baike.baidu.com/item/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F)]
+
+**归并排序**采用经典的分治（divide-and-conquer）策略来对序列进行排序：
+* 「分」的阶段首先将序列一步步分解成小的子序列进行分段排序；
+* 「治」的阶段则将分段有序的子序列合并在一起，使得整个序列变得有序。
+
+下图给出了归并排序的基本步骤示意图：
+<br>
+
+![meger_sort.png](https://pic.leetcode-cn.com/1651123691-dEdJgZ-meger_sort.png)
+
+<br> </br>
+
+下图以最后一步中合并分段有序的子序列为例做下说明：
+
+![meger_sort_merge.png](https://pic.leetcode-cn.com/1651126800-jUBBqH-meger_sort_merge.png)
+
+设立两个指针 $left$ 和 $right$，分别指向左右两个待合并的已有序的子数组 $nums[low, mid]$ 和 $nums[mid+1, high]$。 如图中所示，在合并左右两个子数组时，若 $nums[right] < nums[left]$，则将当前更小的 $nums[right]$ 放入排序结果中。依此类推，即可得到最终排好序的数组。
+
+&nbsp;
+
+**代码：**
+
+下面给出了 Python 语言的实现，并添加了较为详细的注释：
+<br>
+
+* []
+
+```Python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+
+        def mergeSort(arr, low, high):
+            if low >= high:                 # 递归结束标志
+                return
+            
+            mid = low + (high-low)//2       # 中间位置
+            mergeSort(arr, low, mid)        # 递归对前后两部分进行排序
+            mergeSort(arr, mid+1, high)
+
+            left, right = low, mid+1        # 将arr一分为二：left指向前半部分（已有序），right指向后半部分（已有序）
+            tmp = []                        # 记录排序结果
+            while left <= mid and right <= high:    # 比较排序，优先添加前后两部分中的较小者
+                if arr[left] <= arr[right]:         # left指示的元素较小
+                    tmp.append(arr[left])
+                    left += 1
+                else:                               # right指示的元素较小
+                    tmp.append(arr[right])
+                    right += 1
+            
+            while left <= mid:              # 若左半部分还有剩余，将其直接添加到结果中
+                tmp.append(arr[left])
+                left += 1
+            # tmp += arr[left:mid+1]        # 等价于以上三行
+
+            while right <= high:            # 若右半部分还有剩余，将其直接添加到结果中
+                tmp.append(arr[right])
+                right += 1
+            # tmp += arr[right:high+1]      # 等价于以上三行
+
+            arr[low: high+1] = tmp          # [low, high] 区间完成排序
+        
+
+        mergeSort(nums, 0, len(nums)-1)     # 调用mergeSort函数完成排序
+        return nums
+```
+
+&nbsp;
+
+---
+
+### 方法三. 堆排序（Heap Sort）
+
+堆排序（英语：Heapsort）是指利用**堆**（heap）这种数据结构所设计的一种排序算法。堆是一个近似**完全二叉树**的结构，并同时满足堆积的性质：即子节点的键值或索引总是小于（或者大于）它的父节点。[摘自@[维基百科](https://zh.m.wikipedia.org/zh-hans/%E5%A0%86%E6%8E%92%E5%BA%8F)]
+
+堆可看作是一个「完全二叉树」的结构：
+
+> 记一个二叉树的深度为 $h$，若除第 $h$ 层外，该二叉树的其它各层 $[1,\ h-1]$ 的节点数均达到最大值（满的），且第 $h$ 层所有的节点均连续集中在最左边，那么这棵树即为一棵 **完全二叉树**。
+
+根据父子节点之间的关系，堆又可大致分为两类（如下图所示）：
+
+![heap.png](https://pic.leetcode-cn.com/1653536003-vJzfMj-heap.png)
+
+* 大根堆／大顶堆：每个节点的值均大于等于其左右孩子节点的值；
+* 小根堆／小顶堆：每个节点的值均小于等于其左右孩子节点的值。
+
+若对堆中的节点按照层序遍历的方式进行编号，则可将其结构映射到数组中。若从 0 开始编号（如上图所示），则节点 $i$ 的「左子节点」为 $2i+1$，「右子节点」为 $2i+2$，此时大根堆和小根堆满足以下关系：
+
+$$
+\begin{cases}
+大根堆： nums[i] >= nums[2i+1] \quad \& \quad nums >= nums[2i+2] \\
+小根堆：nums[i] <= nums[2i+1] \quad \& \quad nums[i] <= nums[2i+2]
+\end{cases}
+$$
+
+同样地，若从 1 开始对堆中的节点进行编号，则节点 $i$ 的「左子节点」为 $2i$，「右子节点」为 $2i+1$，此时大根堆和小根堆满足以下关系：
+
+$$
+\begin{cases}
+大根堆： nums[i] >= nums[2i] \quad \& \quad nums >= nums[2i+1] \\
+小根堆：nums[i] <= nums[2i] \quad \& \quad nums[i] <= nums[2i+1]
+\end{cases}
+$$
+
+<br> </br>
+
+**堆与排序：**
+
+对于一个待排序的包含 $n$ 个元素的数组 $nums$，**堆排序** 通常包含以下几个基本步骤：
+
+1. **建堆**：将待排序的数组初始化为大根堆（小根堆）。此时，堆顶的元素（即根节点）即为整个数组中的最大值（最小值）。
+2. **交换和调整**：将堆顶元素与末尾元素进行交换，此时末尾即为最大值（最小值）。除去末尾元素后，将其他 $n-1$ 个元素重新构造成一个大根堆（小根堆），如此便可得到原数组 $n$ 个元素中的次大值（次小值）。
+3. 重复步骤二，直至堆中仅剩一个元素，如此便可得到一个有序序列了。
+
+通过以上步骤我们也可以发现：
+
+> 对于「升序排列」数组，需用到大根堆；
+> 对于「降序排列」数组，则需用到小根堆。
+
+<br> </br>
+
+**案例：**
+
+假设有一个待排序的数组 $nums=[5, 2,1, 9, 6, 8]$，我们可将其构造成一个二叉树，如下图所示：
+
+![heap_sort-0.png](https://pic.leetcode-cn.com/1652982171-XeXCgc-heap_sort-0.png)
+
+下面以  $nums=[5, 2,1, 9, 6, 8]$ 为例，讲解下如何构造大根堆，并实现其「升序排列」。
+
+#### I.  构造大根堆
+
+如何将一个完全二叉树构造成一个大顶堆？
+
+一个很好的实现方式是从最后一个「非叶子节点」为根节点的子树出发，从右往左、从下往上进行调整操作。
+
+> 需要注意的是：
+> * 若完全二叉树从 0 开始进行编号，则第一个非叶子节点为 $n/2-1$；若完全二叉树从 1 开始进行编号，则第一个非叶子节点为 $n/2$。
+> * 调整针对的是以该非叶子节点为根节点的子树，即对该根节点以下的所有部分均进行调整操作。
+> * 由于我们是从右往左、从下往上遍历非叶子节点的，因此当遍历到某个非叶子节点时，它的子树（不包括该节点本身）已经是堆有序的。
+
+对于以某个非叶子节点的子树而言，其基本的调整操作包括:
+
+1. 如果该节点大于等于其左右两个子节点，则无需再对该节点进行调整，因为它的子树已经是堆有序的；
+2. 如果该节点小于其左右两个子节点中的较大者，则将该节点与子节点中的较大者进行交换，并从刚刚较大者的位置出发继续进行调整操作，直至堆有序。
+
+对于 $nums=[5, 2,1, 9, 6, 8]$，其包含 $n=length(nums)=6$ 个元素，第一个非叶子节点为 $n/2-1=2$，对应的基本建堆（大根堆）步骤如下：
+
+1. 第一个非叶子节点 2：$nums[2]<nums[5]$，即节点 2 小于其左子节点 5（其右子节点不存在），需要调整交换两者。如下图所示：
+
+   ![heap_sort-1.png](https://pic.leetcode-cn.com/1653026629-QUwTWx-heap_sort-1.png)
+
+2. 第二个非叶子节点 1：$nums[1]<nums[3]$ 且 $nums[1]<nums[4]$，即节点 1 均小于其左右子节点，但其左子节点 3 更大，因此需要调整交换节点 1 与较大的子节点 3。如下图所示：
+
+   ![heap_sort-2.png](https://pic.leetcode-cn.com/1653026668-NAhZlk-heap_sort-2.png)
+
+3. 第三个非叶子节点 0：$nums[0]<nums[1]$ 且 $nums[0]<nums[2]$，即节点 0 均小于其左右子节点，但其左子节点 1 更大，因此需要调整交换节点 0 与较大的子节点 1。如下图所示：
+
+   ![heap_sort-3-1.png](https://pic.leetcode-cn.com/1653027160-tVyods-heap_sort-3-1.png)
+
+   然而，调整完节点 0 与 节点 1 后我们发现原子树的堆序已被打破，此时 $nums[1]<nums[4]$，即节点 1 小于其右子节点 4，因此还需要继续对以节点 1 为根结点的子树继续进行调整，如下图：
+
+   ![heap_sort-3-2.png](https://pic.leetcode-cn.com/1653027615-UmXVjh-heap_sort-3-2.png)
+
+至此，全部的调整完毕，我们也就建立起了一个大根堆 $nums=[9, 6, 8, 2, 5, 1]$：
+
+![max_heap.png](https://pic.leetcode-cn.com/1653027809-jTOZZx-max_heap.png)
+
+#### II. 排序
+
+建立起一个大根堆后，便可以对数组中的元素进行排序了。总结来看，将堆顶元素与末尾元素进行交换，此时末尾即为最大值。除去末尾元素后，将其他 $n−1$ 个元素重新构造成一个大根堆，继续将堆顶元素与末尾元素进行交换，如此便可得到原数组 $n$ 个元素中的次大值。如此反复进行交换、重建、交换、重建，便可得到一个「升序排列」的数组。
+
+对于大根堆 $nums=[9, 6, 8, 2, 5, 1]$，其堆排序基本步骤如下：
+
+1. 最大元素：此时堆顶元素为最大值，将其交换到末尾，如下所示：
+
+   ![heap_sort-4.png](https://pic.leetcode-cn.com/1653028846-wxHfNM-heap_sort-4.png)
+
+   交换完成后，除去末尾最大元素，此时需要对堆进行重建，使得剩余元素继续满足大根堆的要求。如下所示：
+
+   ![heap_sort-4-1.png](https://pic.leetcode-cn.com/1653028989-GGwgPd-heap_sort-4-1.png)
+
+2. 次大元素：此时堆顶元素为待排序元素中的最大值（即原数组中的次大值），将堆顶元素交换到末尾，如下所示：
+
+   ![heap_sort-5.png](https://pic.leetcode-cn.com/1653029252-UIqfpV-heap_sort-5.png)
+
+   交换完成后，除去末尾最大元素，此时需要对堆进行重建，使得剩余元素继续满足大根堆的要求（省略）。
+
+3. 第三大元素：此时堆顶元素为待排序元素中的最大值（即原数组中的第三大值），将堆顶元素交换到末尾，如下所示：
+
+   ![heap_sort-6.png](https://pic.leetcode-cn.com/1653029411-ksgvYD-heap_sort-6.png)
+
+   交换完成后，除去末尾最大元素，此时需要对堆进行重建，使得剩余元素继续满足大根堆的要求（省略）。
+
+4. 第四大元素：此时堆顶元素为待排序元素中的最大值（即原数组中的第四大值），将堆顶元素交换到末尾，如下所示：
+
+   ![heap_sort-7.png](https://pic.leetcode-cn.com/1653029493-DGNvcn-heap_sort-7.png)
+
+   交换完成后，除去末尾最大元素，此时需要对堆进行重建，使得剩余元素继续满足大根堆的要求（省略）。
+
+5. 次小元素（第五大元素）：此时堆顶元素为待排序元素中的最大值（即原数组中的次小元素或第五大元素），将堆顶元素交换到末尾，如下所示：
+
+   ![heap_sort-8.png](https://pic.leetcode-cn.com/1653029601-PVjiwH-heap_sort-8.png)
+
+   交换完成后，除去末尾最大元素，此时堆中仅剩一个元素，即为原数组中的最小值。
+
+至此，基于大根堆的升序排列完成，如下所示：
+
+![heap_sort-9.png](https://pic.leetcode-cn.com/1653029889-QFhhfS-heap_sort-9.png)
+
+&nbsp;
+
+**代码：**
+
+下面给出了 Python 语言的实现，并添加了较为详细的注释：
+<br>
+
+**3.1**  从下标 0 开始建堆：
+
+* []
+
+```Python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+
+        def maxHepify(arr, i, end):     # 大顶堆
+            j = 2*i + 1                 # j为i的左子节点【建堆时下标0表示堆顶】
+            while j <= end:             # 自上而下进行调整
+                if j+1 <= end and arr[j+1] > arr[j]:    # i的左右子节点分别为j和j+1
+                    j += 1                              # 取两者之间的较大者
+                
+                if arr[i] < arr[j]:             # 若i指示的元素小于其子节点中的较大者
+                    arr[i], arr[j] = arr[j], arr[i]     # 交换i和j的元素，并继续往下判断
+                    i = j                       # 往下走：i调整为其子节点j
+                    j = 2*i + 1                 # j调整为i的左子节点
+                else:                           # 否则，结束调整
+                    break
+        
+
+        n = len(nums)
+        
+        # 建堆【大顶堆】
+        for i in range(n//2-1, -1, -1):         # 从第一个非叶子节点n//2-1开始依次往上进行建堆的调整
+            maxHepify(nums, i, n-1)
+
+        # 排序：依次将堆顶元素（当前最大值）放置到尾部，并调整堆
+        for j in range(n-1, -1, -1):
+            nums[0], nums[j] = nums[j], nums[0]     # 堆顶元素（当前最大值）放置到尾部j
+            maxHepify(nums, 0, j-1)                 # j-1变成尾部，并从堆顶0开始调整堆
+        
+        return nums
+```
+
+<br> </br>
+
+**3.2**  从下标 1 开始建堆，即在`nums`最左端补充一位 $0$：`nums = [0] + nums`（在`树状数组`和`线段树`结构中也有类似的操作，以便计算父子节点之间的关系）：
+
+* []
+
+```Python
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+
+        def maxHepify(arr, i, end):     # 大顶堆
+            j = 2*i                     # j为i的左子节点【建堆时下标1表示堆顶】
+            while j <= end:
+                if j+1 <= end and arr[j+1] > arr[j]:    # i的左右子节点分别为j和j+1
+                    j += 1                              # 取两者之间的较大者
+                
+                if arr[i] < arr[j]:             # 若i指示的元素小于其子节点中的较大者
+                    arr[i], arr[j] = arr[j], arr[i]     # 交换i和j的元素，并继续往下判断
+                    i = j                       # 往下走：i调整为其子节点j
+                    j = 2*i                     # j调整为i的左子节点
+                else:                           # 否则，结束调整
+                    break
+        
+        n = len(nums)
+        nums = [0] + nums       # nums头部添加0，满足从下标1开始建堆
+        
+        # 建堆【大顶堆】
+        for i in range(n//2, 0, -1):    # 从第一个非叶子节点n//2开始依次往上进行建堆的调整【注意：此时堆顶为下标1】
+            maxHepify(nums, i, n)
+        
+        # 排序：依次将堆顶元素（当前最大值）放置到尾部，并调整堆
+        for j in range(n, 0, -1):
+            nums[1], nums[j] = nums[j], nums[1]     # nums[1]为堆顶元素（最大值），将其放置到尾部j
+            maxHepify(nums, 1, j-1)                 # j-1变成尾部，并从堆顶1开始调整堆
+        
+        return nums[1:]
+        
+```
+
+<br> </br>
+
+---
+
+<br> </br>
+
+如有帮助，欢迎点赞、评论、收藏、分享等各种支持；如有纰漏，欢迎指出和讨论。
+

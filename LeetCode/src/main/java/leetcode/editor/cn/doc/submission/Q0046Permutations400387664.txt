@@ -1,0 +1,41 @@
+class Solution {
+
+     List<List<Integer>> res = new LinkedList<>();
+
+     public List<List<Integer>> permute(int[] nums) {
+         //记录每次 路径
+         LinkedList<Integer> track = new LinkedList<>();
+         //每个数字 只能用一次
+         boolean[] used = new boolean[nums.length];
+        backtrace(used,track,nums);
+        return res;
+     }
+
+     public void backtrace(boolean[] used, LinkedList<Integer> track, int[] nums){
+         if (nums.length == track.size()){
+             //注意不能直接把 track 添加进去。每次只会加上同一个 引用
+             res.add(new LinkedList<>(track));
+             return;
+         }
+         for (int i = 0; i < nums.length; i++) {
+
+             if (used[i]){
+                 continue;
+             }
+             //做选择
+             track.add(nums[i]);
+             used[i] = true;
+
+
+             backtrace(used,track,nums);
+
+             //取消选择
+             int index = track.indexOf(nums[i]);
+             track.remove(index);
+             used[i] = false;
+         }
+     }
+}
+
+//runtime:1 ms
+//memory:41.4 MB

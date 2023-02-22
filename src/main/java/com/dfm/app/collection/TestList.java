@@ -5,6 +5,7 @@ import com.dfm.app.collection.pojo.Org;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @Author:fengming.dai
@@ -13,6 +14,11 @@ public class TestList {
     public static void main(String[] args) {
         retainAllofList();
     }
+
+
+//    public static void testPq(){
+//        new PriorityQueue<>()
+//    }
 
     public static void retainAllofList(){
         List<String> listA = new ArrayList<>();

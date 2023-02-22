@@ -1,0 +1,35 @@
+**思路：**
+1. 首先我们知道n个括号，那么会有n个“(” 和 n个“)”。
+2. 那么我们可以先确定左括号的位置，左括号有剩余的话，先拼接左括号，然后再到右括号。
+3. 递归结束条件是当左右括号数量都为n时，加入List,然后返回。
+4. 简单的剪枝条件是当右括号数量大于左括号时直接返回。
+
+* 
+
+```
+class Solution {
+    // 全局变量，减少函数参数
+    List<String> list = new ArrayList<>();
+    public List<String> generateParenthesis(int n) {
+        // String指向内容不可变，但是其引用可以变，所以我们用String
+        // 不要用StringBuilder,虽然拼接快，但是回溯时删除效率低
+        String sb = "";
+        helper(sb,n,0,0);
+        return list;
+    }
+    // l,r用来统计左右括号的数量
+    public void helper(String sb,int n,int l,int r){
+         if(l==n && r==n) {
+             list.add(sb);            
+             return;
+         }
+         if(l>n||r>n||r>l) return;    
+            //  先左括号
+            helper(sb+"(",n,l+1,r); 
+            //  后右括号
+            helper(sb+")",n,l,r+1); 
+            return;                       
+    }
+}
+```
+

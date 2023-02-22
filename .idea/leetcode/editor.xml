@@ -25,6 +25,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0022GenerateParentheses.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0022GenerateParentheses.md" />
+              <option name="frontendQuestionId" value="leetcode.cn22" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0022GenerateParentheses.java" />
+              <option name="titleSlug" value="generate-parentheses" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0023MergeKSortedLists.java">
           <value>
             <LeetcodeEditor>
@@ -187,6 +198,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0912SortAnArray.java" />
               <option name="titleSlug" value="sort-an-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q面试题 17.14SmallestKLcci.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q面试题 17.14SmallestKLcci.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 17.14" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q面试题 17.14SmallestKLcci.java" />
+              <option name="titleSlug" value="smallest-k-lcci" />
             </LeetcodeEditor>
           </value>
         </entry>

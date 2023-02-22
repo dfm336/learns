@@ -1,0 +1,52 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    //记录结果
+    int res;
+    //便于找到 第 k个，
+    int rank = 0;
+    /**
+     * 利用 BST 的 中序遍历 为 升序
+     * @param root
+     * @param k
+     * @return
+     */
+    public int kthSmallest(TreeNode root, int k) {
+        if (root == null){
+            return -1;
+        }
+        rank = k;
+        midOrder(root);
+        return  res;
+    }
+
+    private void midOrder(TreeNode root) {
+        if (root == null){
+            return;
+        }
+        midOrder(root.left);
+
+        rank--;
+        if (rank == 0){
+            res = root.val;
+            return;
+        }
+
+        midOrder(root.right );
+    }
+}
+//runtime:0 ms
+//memory:38.4 MB

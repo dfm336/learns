@@ -14,6 +14,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0019RemoveNthNodeFromEndOfList.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0019RemoveNthNodeFromEndOfList.md" />
+              <option name="frontendQuestionId" value="leetcode.cn19" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0019RemoveNthNodeFromEndOfList.java" />
+              <option name="titleSlug" value="remove-nth-node-from-end-of-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0021MergeTwoSortedLists.java">
           <value>
             <LeetcodeEditor>
@@ -80,6 +91,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0051NQueens.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0051NQueens.md" />
+              <option name="frontendQuestionId" value="leetcode.cn51" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0051NQueens.java" />
+              <option name="titleSlug" value="n-queens" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0070ClimbingStairs.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0070ClimbingStairs.md" />
+              <option name="frontendQuestionId" value="leetcode.cn70" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0070ClimbingStairs.java" />
+              <option name="titleSlug" value="climbing-stairs" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0088MergeSortedArray.java">
           <value>
             <LeetcodeEditor>
@@ -99,6 +132,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0092ReverseLinkedListIi.java" />
               <option name="titleSlug" value="reverse-linked-list-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0094BinaryTreeInorderTraversal.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0094BinaryTreeInorderTraversal.md" />
+              <option name="frontendQuestionId" value="leetcode.cn94" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0094BinaryTreeInorderTraversal.java" />
+              <option name="titleSlug" value="binary-tree-inorder-traversal" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -190,6 +234,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0230KthSmallestElementInABst.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0230KthSmallestElementInABst.md" />
+              <option name="frontendQuestionId" value="leetcode.cn230" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0230KthSmallestElementInABst.java" />
+              <option name="titleSlug" value="kth-smallest-element-in-a-bst" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0912SortAnArray.java">
           <value>
             <LeetcodeEditor>
@@ -198,6 +253,28 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0912SortAnArray.java" />
               <option name="titleSlug" value="sort-an-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1140StoneGameIi.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q1140StoneGameIi.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1140" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1140StoneGameIi.java" />
+              <option name="titleSlug" value="stone-game-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1313DecompressRunLengthEncodedList.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q1313DecompressRunLengthEncodedList.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1313" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1313DecompressRunLengthEncodedList.java" />
+              <option name="titleSlug" value="decompress-run-length-encoded-list" />
             </LeetcodeEditor>
           </value>
         </entry>

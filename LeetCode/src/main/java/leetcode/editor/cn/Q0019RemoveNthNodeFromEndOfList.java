@@ -1,4 +1,7 @@
 package leetcode.editor.cn;
+
+import org.checkerframework.checker.units.qual.K;
+
 /**
  * @author  fengming.dai 
  * @date    2023-02-22 19:40:55 
@@ -53,7 +56,9 @@ package leetcode.editor.cn;
 //
     
  public static void main(String[] args) {        
- 	Solution solution = new Q0019RemoveNthNodeFromEndOfList().new Solution();    
+ 	Solution solution = new Q0019RemoveNthNodeFromEndOfList().new Solution();
+ 	ListNode node = new ListNode(1);
+ 	solution.removeNthFromEnd(node,1);
  }    
 
  //leetcode submit region begin(Prohibit modification and deletion)
@@ -69,24 +74,55 @@ package leetcode.editor.cn;
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        if ( head == null ){
+            return null;
+        }
         ListNode slow = head;
         ListNode fast = head;
-        for (int i = 0; i < n ; i++) {
-            fast = fast.next;
+
+//        int count = 1;
+        for (int i = 0; i < n  ; i++) {
+            if ( fast != null ){
+                fast = fast.next;
+//                count ++;
+            }else {
+                //说明 整个链表 不支持 fast 走n步
+                break;
+            }
+
+        }
+        // count <= n
+        // n == count说明  存在 倒数 第n个 节点
+
+        // n > count ，说明 不存在 倒数第k 个节点
+//        if ( n > count ){
+//            return null;
+//        }
+
+        //说明 不存在 倒数第k 个节点
+        if ( fast == null){
+            return null;
         }
 
-        while (fast.next != null){
+        while ( fast.next != null){
             slow = slow.next;
             fast = fast.next;
         }
 
-        slow.next = slow.next.next;
+        if ( slow.next != null ){
+            slow.next = slow.next.next;
+        } else {
+            slow.next = null;
+        }
+
+
+
 
         return head;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
-         public class ListNode {
+         public static class ListNode {
           int val;
           ListNode next;
           ListNode() {}

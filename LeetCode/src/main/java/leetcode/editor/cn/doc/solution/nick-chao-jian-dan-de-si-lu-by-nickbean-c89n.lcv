@@ -1,0 +1,36 @@
+### 全行注解，方便理解！
+
+🌇 点赞 👍 收藏 ⭐留言 📝 一键三连 ~关注Nick，从你我做起！
+
+### 方法一：回溯
+
+### 执行效率图
+
+![image.png](https://pic.leetcode-cn.com/1658733594-BRvbZL-image.png)
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null){
+            return null;
+        }
+        if(root == p || root == q){
+            return root;
+        }
+        TreeNode leftNode = lowestCommonAncestor(root.left,p,q);
+        TreeNode rightNode = lowestCommonAncestor(root.right,p,q);
+        if(leftNode == null){
+            return rightNode;
+        }else if(rightNode == null){
+            return leftNode;
+        }else{
+            return root;
+        }
+    }
+}
+```
+

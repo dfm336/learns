@@ -73,6 +73,43 @@ import org.checkerframework.checker.units.qual.K;
  * }
  */
 class Solution {
+
+    /**
+     * 获取链表总长度
+     * 计算 第 n-1 位置，
+     * 删除节点
+     * @param head
+     * @param n
+     * @return
+     */
+    public ListNode acF(ListNode head, int n) {
+        ListNode p = head;
+        //获取 链表长度
+        int count = 0;
+        while(p != null){
+            count++;
+            p = p.next;
+        }
+        //计算 快指针 要往前 走多少步数,到达 n-1个节点
+        int del = count-n-1;
+
+        p= head;
+        if(del >=1){
+            for(int i=1;i<=del;i++)p=p.next;
+        }
+        else{
+            //异常情况， 链表长度 == n
+            if(del == -1){
+                return head.next;
+            }
+        }
+        //删除 第 n 个
+        ListNode next = p.next.next;
+        p.next = next;
+        return head;
+
+    }
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if ( head == null ){
             return null;

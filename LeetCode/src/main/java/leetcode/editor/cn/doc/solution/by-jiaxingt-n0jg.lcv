@@ -1,0 +1,46 @@
+* 
+
+```
+
+class Solution {
+
+    private int max;
+
+    public int maxPathSum(TreeNode root) {
+        max = root.val;
+        dfs(root);
+        return max;
+    }
+
+    private int dfs(TreeNode node) {
+
+        if (node == null) {
+            return 0;
+        }
+
+        int parent = node.val;
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+
+        int current = parent;
+        if (left > 0) {
+            current += left;
+        }
+        if (right > 0) {
+            current += right;
+        }
+        if (current > max) {
+            max = current;
+        }
+
+
+        return Math.max(parent, parent + Math.max(left, right));
+
+    }
+}
+
+
+
+
+```
+

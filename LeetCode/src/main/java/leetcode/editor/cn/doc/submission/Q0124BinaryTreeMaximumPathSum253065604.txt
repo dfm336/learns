@@ -1,0 +1,40 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public  int max = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        if (root == null){
+            return  0;
+        }
+        maxSideSum(root);
+        return max;
+    }
+    public  int maxSideSum(TreeNode root){
+        if (root == null){
+            return  0;
+        }
+        //这两处 调用 max 比较是截断 负数
+        int left = Math.max(0,maxSideSum(root.left));
+        int right = Math.max(0,maxSideSum(root.right));
+        //如果 当前节点的 left+right + root.val  > max
+        //因为可以 任意节点出发，此时的 max 肯定是 三个节点 max值  都用到
+        max = Math.max(max,left+right+root.val);
+        //定义的是 单边最大路径，只能选择 root+ max(left,right)
+        return Math.max(left,right) + root.val;
+    }
+}
+//runtime:0 ms
+//memory:40.3 MB

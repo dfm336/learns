@@ -4,6 +4,7 @@ package com.dfm.app.timedeal;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,7 +20,17 @@ public class TestLocalData {
 //       getYearStartDay(YearMonth.now());
 //        testLong();
 //        getCurMonth(6,7);
-        printMinMonth();
+        String s = genPackTaskCode();
+        System.out.println("s = " + s);
+    }
+
+    private static String genPackTaskCode() {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+        String format = sdf.format(new Date());
+        long currentTimeMillis = System.currentTimeMillis();
+        String timeStamp = String.valueOf(currentTimeMillis);
+        String sub = timeStamp.substring(timeStamp.length() - 3);
+        return "DB-" + format + sub;
     }
 
 

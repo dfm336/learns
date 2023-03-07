@@ -56,7 +56,8 @@ import java.util.Map;
     
  public static void main(String[] args) {        
  	Solution solution = new Q0003LongestSubstringWithoutRepeatingCharacters().new Solution();
- 	solution.lengthOfLongestSubstring("abcabcbb");
+     int i = solution.lengthOfLongestSubstring("bbbbb");
+     System.out.println("i = " + i);
  }
 
  /**
@@ -64,7 +65,9 @@ import java.util.Map;
   */
  class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if ( s == null || s.length() == 0)return 0;
+        if ( s == null || s.length() == 0) {
+            return 0;
+        }
         int left = 0, right = 0;
         int max = 0;
         //记录 窗口内 元素 个数
@@ -72,17 +75,23 @@ import java.util.Map;
         while ( right < s.length() ){
             char cur = s.charAt(right);
             //加入窗口
-            window.put(cur,1);
+            Integer cnt = window.get(cur);
+            if ( cnt == null){
+                window.put(cur,1);
+            }else {
+                window.put(cur,cnt+1);
+            }
+
             right++;
 
             //当前 元素 加入后，是否 是重复 数据
             while ( window.get(cur) > 1 ){
                 //伸缩 窗口， 把 左边移出去。
                 char l = s.charAt(left);
-                window.put(l,window.get(l)-1)
+                window.put(l,window.get(l)-1);
                 left++;
             }
-            max =Math.max(max,right - left);
+            max = Math.max(max,right - left);
 
         }
         return max;

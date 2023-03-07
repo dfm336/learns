@@ -14,6 +14,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0004MedianOfTwoSortedArrays.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0004MedianOfTwoSortedArrays.md" />
+              <option name="frontendQuestionId" value="leetcode.cn4" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0004MedianOfTwoSortedArrays.java" />
+              <option name="titleSlug" value="median-of-two-sorted-arrays" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0005LongestPalindromicSubstring.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0005LongestPalindromicSubstring.md" />
+              <option name="frontendQuestionId" value="leetcode.cn5" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0005LongestPalindromicSubstring.java" />
+              <option name="titleSlug" value="longest-palindromic-substring" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0019RemoveNthNodeFromEndOfList.java">
           <value>
             <LeetcodeEditor>
@@ -77,6 +99,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0025ReverseNodesInKGroup.java" />
               <option name="titleSlug" value="reverse-nodes-in-k-group" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0033SearchInRotatedSortedArray.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0033SearchInRotatedSortedArray.md" />
+              <option name="frontendQuestionId" value="leetcode.cn33" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0033SearchInRotatedSortedArray.java" />
+              <option name="titleSlug" value="search-in-rotated-sorted-array" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -220,6 +253,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0116PopulatingNextRightPointersInEachNode.java" />
               <option name="titleSlug" value="populating-next-right-pointers-in-each-node" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0121BestTimeToBuyAndSellStock.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0121BestTimeToBuyAndSellStock.md" />
+              <option name="frontendQuestionId" value="leetcode.cn121" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0121BestTimeToBuyAndSellStock.java" />
+              <option name="titleSlug" value="best-time-to-buy-and-sell-stock" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -396,6 +440,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0912SortAnArray.java" />
               <option name="titleSlug" value="sort-an-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1096BraceExpansionIi.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q1096BraceExpansionIi.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1096" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1096BraceExpansionIi.java" />
+              <option name="titleSlug" value="brace-expansion-ii" />
             </LeetcodeEditor>
           </value>
         </entry>

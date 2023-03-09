@@ -66,13 +66,42 @@ package leetcode.editor.cn;
 //
     
  public static void main(String[] args) {        
- 	Solution solution = new Q0088MergeSortedArray().new Solution();    
+ 	Solution solution = new Q0088MergeSortedArray().new Solution();
+ 	int[] nums1 = {1,2,3,0,0,0};
+ 	int[] nums2 = {2,5,6};
+ 	solution.merge(nums1,3,nums2,3);
+     for (int i = 0; i < nums1.length; i++) {
+         System.out.println(nums1[i]);
+     }
  }    
 
  //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
+        if ( n==0)return;
+        int l1 = 0, l2 = 0, cnt = 0;
+        int[] tmp = new int[m+n];
+        while ( l1 < m && l2 < n ){
+            if ( nums1[l1] >= nums2[l2] ) {
+               tmp[cnt++] = nums2[l2];
+               l2++;
+            }
+            else if ( nums1[l1] < nums2[l2] ){
+                tmp[cnt++] = nums1[l1];
+                l1++;
+            }
+        }
 
+        while ( l1 < m){
+            tmp[cnt++] = nums1[l1++];
+        }
+
+        while ( l2 < n){
+            tmp[cnt++] = nums2[l2++];
+        }
+        for (int i = 0; i < cnt; i++) {
+            nums1[i] = tmp[i];
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

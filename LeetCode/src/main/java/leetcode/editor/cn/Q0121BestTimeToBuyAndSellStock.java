@@ -53,7 +53,7 @@ package leetcode.editor.cn;
  //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int maxProfit(int[] prices) {
-
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

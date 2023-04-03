@@ -1,0 +1,28 @@
+class Solution {
+    public int reverse(int x) {
+          String str = String.valueOf(x);
+        if(str.length() <= 1)return new Integer(str);
+        boolean flag = false;
+        if(str.charAt(0) == '-'){
+            str = str.replace('-',' ');
+            flag = true;
+        }
+        char[] chars = str.trim().toCharArray();
+        for(int i=0; i<chars.length/2;i++){
+            char t = chars[i];
+            chars[i] = chars[chars.length-1-i];
+            chars[chars.length-1-i] = t;
+        }
+        String s = (chars[0] != '0') ? String.valueOf(chars) : String.valueOf(chars).substring(1);
+        Integer toInt = null;
+        try {
+            toInt = Integer.parseInt(s);
+
+        }catch (NumberFormatException e){
+            return 0;
+        }
+        return toInt = (flag == true) ? -1*toInt : toInt;
+    }
+}
+//runtime:3 ms
+//memory:36.5 MB

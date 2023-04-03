@@ -36,6 +36,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0007ReverseInteger.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0007ReverseInteger.md" />
+              <option name="frontendQuestionId" value="leetcode.cn7" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0007ReverseInteger.java" />
+              <option name="titleSlug" value="reverse-integer" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0019RemoveNthNodeFromEndOfList.java">
           <value>
             <LeetcodeEditor>
@@ -99,6 +110,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0025ReverseNodesInKGroup.java" />
               <option name="titleSlug" value="reverse-nodes-in-k-group" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0031NextPermutation.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0031NextPermutation.md" />
+              <option name="frontendQuestionId" value="leetcode.cn31" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0031NextPermutation.java" />
+              <option name="titleSlug" value="next-permutation" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -473,6 +495,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1313DecompressRunLengthEncodedList.java" />
               <option name="titleSlug" value="decompress-run-length-encoded-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1844ReplaceAllDigitsWithCharacters.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q1844ReplaceAllDigitsWithCharacters.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1844" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1844ReplaceAllDigitsWithCharacters.java" />
+              <option name="titleSlug" value="replace-all-digits-with-characters" />
             </LeetcodeEditor>
           </value>
         </entry>

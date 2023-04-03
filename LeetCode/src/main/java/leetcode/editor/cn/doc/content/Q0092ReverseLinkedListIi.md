@@ -37,7 +37,7 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线，[第 17 期刷题打卡挑战](https://aep.xet.tech/s/2jPp5X) 最后一天报名！**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 
 
@@ -46,7 +46,7 @@
 
 ## 基本思路
 
-PS：这道题在[《算法小抄》](https://mp.weixin.qq.com/s/tUSovvogbR9StkPWb75fUw) 的第 283 页。
+PS：这道题在[《算法小抄》](https://item.jd.com/12759911.html) 的第 283 页。
 
 迭代解法很简单，用一个 for 循环即可，但这道题经常用来考察递归思维，让你用纯递归的形式来解决，这里就给出递归解法的思路。
 
@@ -88,7 +88,7 @@ class Solution {
         head.next = successor;
         return last;/**<extend up -90>
 
-![](https://labuladong.gitee.io/pictures/反转链表/7.jpg)
+![](https://labuladong.github.io/pictures/反转链表/7.jpg)
 */
     }
 }
@@ -101,6 +101,10 @@ class Solution {
 
 </details>
 </div>
+
+
+
+
 
 
 

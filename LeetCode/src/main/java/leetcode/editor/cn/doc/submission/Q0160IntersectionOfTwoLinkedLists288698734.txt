@@ -1,0 +1,35 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode pA = headA;
+        ListNode pB = headB;
+        while (pA != pB){
+            if (pA == null){
+                //headA遍历完了， 把 headB接着遍历， 相当于 走了 next了
+                pA = headB;
+            }else {
+                pA = pA.next;
+            }
+            if (pB == null){
+                //同上，b走完，
+                pB = headA;
+            }else {
+                pB = pB.next;
+            }
+           
+        }
+        return pA;
+    }
+}
+//runtime:1 ms
+//memory:44.5 MB

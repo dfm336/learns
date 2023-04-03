@@ -44,7 +44,7 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线，[第 17 期刷题打卡挑战](https://aep.xet.tech/s/2jPp5X) 下周开始，报名从速！。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 
 
@@ -53,7 +53,7 @@
 
 ## 基本思路
 
-PS：这道题在[《算法小抄》](https://mp.weixin.qq.com/s/tUSovvogbR9StkPWb75fUw) 的第 289 页。
+PS：这道题在[《算法小抄》](https://item.jd.com/12759911.html) 的第 289 页。
 
 输入 `head`，`reverseKGroup` 函数能够把以 `head` 为头的这条链表进行翻转。
 
@@ -61,19 +61,19 @@ PS：这道题在[《算法小抄》](https://mp.weixin.qq.com/s/tUSovvogbR9StkP
 
 **1、先反转以 `head` 开头的 `k` 个元素**。
 
-![](https://labuladong.gitee.io/pictures/kgroup/3.jpg)
+![](https://labuladong.github.io/pictures/kgroup/3.jpg)
 
 **2、将第 `k + 1` 个元素作为 `head` 递归调用 `reverseKGroup` 函数**。
 
-![](https://labuladong.gitee.io/pictures/kgroup/4.jpg)
+![](https://labuladong.github.io/pictures/kgroup/4.jpg)
 
 **3、将上述两个过程的结果连接起来**。
 
-![](https://labuladong.gitee.io/pictures/kgroup/5.jpg)
+![](https://labuladong.github.io/pictures/kgroup/5.jpg)
 
 最后函数递归完成之后就是这个结果，完全符合题意：
 
-![](https://labuladong.gitee.io/pictures/kgroup/7.jpg)
+![](https://labuladong.github.io/pictures/kgroup/7.jpg)
 
 **详细题解：[如何 K 个一组反转链表](https://labuladong.github.io/article/fname.html?fname=k个一组反转链表)**
 
@@ -98,7 +98,7 @@ class Solution {
         // 递归反转后续链表并连接起来
         a.next = reverseKGroup(b, k);/**<extend up -90>
 
-![](https://labuladong.gitee.io/pictures/kgroup/6.jpg)
+![](https://labuladong.github.io/pictures/kgroup/6.jpg)
 */
         return newHead;
     }
@@ -106,7 +106,7 @@ class Solution {
     /* 反转区间 [a, b) 的元素，注意是左闭右开 */
     ListNode reverse(ListNode a, ListNode b) {/**<extend up -300>
 
-![](https://labuladong.gitee.io/pictures/kgroup/8.gif)
+![](https://labuladong.github.io/pictures/kgroup/8.gif)
 */
         ListNode pre, cur, nxt;
         pre = null;
@@ -130,6 +130,12 @@ class Solution {
 
 </details>
 </div>
+
+
+
+
+
+
 
 
 

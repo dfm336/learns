@@ -1,15 +1,36 @@
 package com.dfm.app.strdeal;
 
+import com.google.common.collect.Lists;
+import org.apache.commons.lang3.StringUtils;
+import org.luaj.vm2.ast.Str;
+
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author:fengming.dai
  */
 public class StrTest {
     public static void main(String[] args) {
-        testReplace();
+//        testReplace();
+        List<String> spilt = spilt("2332,2424,524,2442，2424，");
+        spilt.forEach(System.out::println);
     }
+
+
+    public static List<String> spilt(String str){
+        if (StringUtils.isBlank( str )){
+            return new ArrayList<>();
+        }
+        String regex = ",|，";
+        String[] split = str.split(regex);
+        List<String> list = Lists.newArrayList(split);
+        return list;
+    }
+
+
     public static String SLASH =  "/";;
 
 

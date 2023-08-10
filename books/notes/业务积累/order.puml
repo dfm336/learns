@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+User -> Application: Place Order Request
+Application -> Inventory: Check Product Availability
+Inventory --> Application: Product Availability Status
+
+alt Sufficient Stock
+    Application -> PaymentGateway: Process Payment
+    PaymentGateway --> Application: Payment Confirmation
+
+    Application -> Shipping: Ship Order
+    Shipping --> Application: Shipping Confirmation
+
+    Application -> User: Order Confirmation
+else Insufficient Stock
+    Application --> User: Out of Stock Notification
+end
+
+@enduml
+
+用户发出下单请求（Place Order Request）给应用程序。
+应用程序向库存查询产品的可用性（Check Product Availability）。
+库存返回产品的可用性状态给应用程序（Product Availability Status）。
+如果库存充足，应用程序发起支付处理请求（Process Payment）给支付网关。
+支付网关返回支付确认给应用程序（Payment Confirmation）。
+应用程序发起订单发货请求（Ship Order）给物流。
+物流返回发货确认给应用程序（Shipping Confirmation）。
+应用程序发送订单确认给用户（Order Confirmation）。
+如果库存不足，应用程序发送缺货通知给用户（Out of Stock Notification）

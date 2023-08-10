@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Application -> Cache: Read Operation
+Cache --> Application: Cached Data
+
+Application -> Cache: Write Operation
+Cache -> Database: Update Operation
+Database --> Cache: Updated Data
+
+Application -> Cache: Read Operation
+Cache --> Application: Cached Data
+
+Application -> Cache: Delete Operation
+Cache -> Database: Delete Operation (Delayed)
+Cache --> Application: Deletion Acknowledgement
+
+Application -> Cache: Read Operation
+Cache --> Application: Data Not Found
+Cache -> Database: Read Operation
+Database --> Cache: Retrieved Data
+Cache --> Application: Retrieved Data
+
+
+
+
+@enduml

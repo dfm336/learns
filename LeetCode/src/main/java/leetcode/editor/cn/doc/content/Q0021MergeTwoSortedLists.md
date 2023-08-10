@@ -39,7 +39,7 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线，[第 17 期刷题打卡挑战](https://aep.xet.tech/s/2jPp5X) 下周开始，报名从速！。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 
 
@@ -52,7 +52,7 @@
 
 经典算法题了，[双指针技巧](https://labuladong.github.io/article/fname.html?fname=链表技巧) 用起来。
 
-![](https://labuladong.gitee.io/pictures/链表技巧/1.gif)
+![](https://labuladong.github.io/pictures/链表技巧/1.gif)
 
 这个算法的逻辑类似于「拉拉链」，`l1, l2` 类似于拉链两侧的锯齿，指针 `p` 就好像拉链的拉索，将两个有序链表合并。
 
@@ -73,7 +73,7 @@ class Solution {
 
         while (p1 != null && p2 != null) {/**<extend down -200>
 
-![](https://labuladong.gitee.io/pictures/链表技巧/1.gif)
+![](https://labuladong.github.io/pictures/链表技巧/1.gif)
 */
             // 比较 p1 和 p2 两个指针
             // 将值较小的的节点接到 p 指针
@@ -101,6 +101,8 @@ class Solution {
 }
 ```
 
+<visual slug='merge-two-sorted-lists'/>
+
 **类似题目**：
   - [1305. 两棵二叉搜索树中的所有元素 🟠](/problems/all-elements-in-two-binary-search-trees)
   - [141. 环形链表 🟢](/problems/linked-list-cycle)
@@ -126,6 +128,8 @@ class Solution {
 
 </details>
 </div>
+
+
 
 
 

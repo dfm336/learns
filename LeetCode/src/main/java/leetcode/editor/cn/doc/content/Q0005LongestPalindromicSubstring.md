@@ -45,7 +45,7 @@
 
 > 本文有视频版：[数组双指针技巧汇总](https://www.bilibili.com/video/BV1iG411W7Wm)
 
-PS：这道题在[《算法小抄》](https://mp.weixin.qq.com/s/tUSovvogbR9StkPWb75fUw) 的第 373 页。
+PS：这道题在[《算法小抄》](https://item.jd.com/12759911.html) 的第 373 页。
 
 **寻找回文串的问题核心思想是：从中间开始向两边扩散来判断回文串**，对于最长回文子串，就是这个意思：
 
@@ -102,6 +102,8 @@ class Solution {
 }
 ```
 
+<visual slug='longest-palindromic-substring'/>
+
 **类似题目**：
   - [167. 两数之和 II - 输入有序数组 🟠](/problems/two-sum-ii-input-array-is-sorted)
   - [26. 删除有序数组中的重复项 🟢](/problems/remove-duplicates-from-sorted-array)
@@ -115,6 +117,8 @@ class Solution {
 
 </details>
 </div>
+
+
 
 
 

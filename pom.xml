@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>LeetCode</module>
+        <module>nettylearning</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

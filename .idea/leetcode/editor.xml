@@ -47,6 +47,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0015ThreeSum.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q0015ThreeSum.md" />
+              <option name="frontendQuestionId" value="leetcode.cn15" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0015ThreeSum.java" />
+              <option name="titleSlug" value="3sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q0019RemoveNthNodeFromEndOfList.java">
           <value>
             <LeetcodeEditor>
@@ -495,6 +506,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1313DecompressRunLengthEncodedList.java" />
               <option name="titleSlug" value="decompress-run-length-encoded-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1734DecodeXoredPermutation.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/doc/content/Q1734DecodeXoredPermutation.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1734" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/LeetCode/src/main/java/leetcode/editor/cn/Q1734DecodeXoredPermutation.java" />
+              <option name="titleSlug" value="decode-xored-permutation" />
             </LeetcodeEditor>
           </value>
         </entry>
